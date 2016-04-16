@@ -21,7 +21,9 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <!-- Tells the browser what the title of this page should be. -->
   <title>Resume</title>
   <!-- Load the page styles. -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
 
   <!--
   jQuery is a common JavaScript library for reading and making changes to the
@@ -37,16 +39,20 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   you can't accomplish with vanilla (regular) JavaScript.
   -->
   <script src="js/jQuery.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
 
   <!-- More on helper.js in the class -->
   <script src="js/helper.js"></script>
 
-  <!--
-  Uncomment the <script> tag below when you're ready to add an interactive
-  Google Map to your resume!
-  -->
-  <!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script> -->
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
+  <script>
+  $(function(){
+    $("#accordion").accordion({
+      heightStyle:"content"
+    });
+  })
+  </script>
   <meta name="viewport" content="width=device-width">
 </head>
 <body unresolved>
@@ -62,28 +68,24 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       <h1>Michael Toback</h1>
       <ul id="topContacts" class='flex-box'></ul>
     </div>
-    <div id="bio"></div>
-    <div style='clear: both;'></div>
-    <div id="skill_list">
-      <h2> Skills</h2>
-    </div>
-    <div id="workExperience" class='gray'>
+    <div id="accordion">
       <h2>Work Experience</h2>
-    </div>
-    <div id="projects">
+      <div id="workExperience" class='gray'>
+      </div>
       <h2>Projects</h2>
-    </div>
-    <div id="education" class='gray'>
+      <div id="projects">
+      </div>
       <h2>Education</h2>
-      <div id="schools"></div>
-    </div>
-    <div id="mapDiv">
+      <div id="education" class='gray'>
+      </div>
       <h2>Where I've Lived and Worked</h2>
-    </div>
-    <div id="letsConnect" class='dark-gray'>
+      <div id="mapDiv">
+      </div>
       <h2 class='orange center-text'>Let's Connect</h2>
-        <ul id="footerContacts" class="flex-box">
-      </ul>
+      <div id="letsConnect" class='dark-gray'>
+          <ul id="footerContacts" class="flex-box">
+        </ul>
+      </div>
     </div>
   </div>
 
