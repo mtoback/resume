@@ -132,6 +132,7 @@ var education = {"schools": [{
 	"majors": ["Biomedical Engineering", "Electrical Engineering"],
 	"yearsAttended": 2,
 	"dates": "1976-1978",
+    "image": "images/cmu.png",
 	"url":"http://www.cmu.edu"
 	}, {
 	"name": "Rensselaer Polytechnic Institute",
@@ -139,6 +140,7 @@ var education = {"schools": [{
 	"degree": "BS Biomed Eng",
 	"majors": ["Biomedical Engineering"],
 	"dates": "1973-1976",
+    "image": "images/rpi.png",
 	"url": "http://www.rpi.edu"
 	}, {
 	"name": "William Taft Law School",
@@ -147,31 +149,50 @@ var education = {"schools": [{
 	"degree": "JD",
 	"majors": ["Law"],
 	"dates": "2001-2006",
+    "image": "images/taft.png",
 	"url": "http://www.taftu.edu/TLS/index.htm"
 	}],
 	"online": [{"school": "udemy",
+             "schoolURL": "http://www.udemy.com",
             "title": "Front-End Developer Course",
             "date": "2016",
+            "image": "images/udacity.png",
             "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"},
             {"school": "udemy",
+             "schoolURL": "http://www.udemy.com",
             "title": "Responsive Images",
-            "date": 2016,
+            "image": "images/udacity.png",
+            "date": "2016",
             "url": "https://www.udacity.com/course/responsive-images--ud882"}],
 
-    "display": function(schools){
+    "display": function(education){
+        var schools = education.schools;
     	for (var index in schools){
     	    $("#education").append(HTMLschoolStart);
-    	    $(".education-entry:last").append(HTMLschoolName.replace("%data%",schools[index].name).replace("%url%",schools[index].url));
-    	    $(".education-entry:last").append(HTMLschoolDegree.replace("%data%",schools[index].degree));
-    	    $(".education-entry:last").append(HTMLschoolDates.replace("%data%",schools[index].dates));
-    	    $(".education-entry:last").append(HTMLschoolLocation.replace("%data%",schools[index].location));
-    	    $(".education-entry:last").append(HTMLschoolMajor.replace("%data%",schools[index].majors.join()));
-
+            $(".education-entry:last").append("<div><img width=100 src='" + schools[index].image + "'></div><div class='edudata'  >")
+    	    $(".education-entry:last .edudata").append(HTMLschoolName.replace("%data%",schools[index].name).replace("%url%",schools[index].url));
+    	    $(".education-entry:last .edudata").append(HTMLschoolDegree.replace("%data%",schools[index].degree));
+    	    $(".education-entry:last .edudata").append(HTMLschoolDates.replace("%data%",schools[index].dates));
+    	    $(".education-entry:last .edudata").append(HTMLschoolLocation.replace("%data%",schools[index].location));
+    	    $(".education-entry:last .edudata").append(HTMLschoolMajor.replace("%data%",schools[index].majors.join()));
+            $(".education-entry:last .edudata").append("</div><div class='clearfix'></div>");
     	}
+        var online = education.online;
+        $("#education").append(HTMLonlineClasses);
+        for (var index in education.online){
+            $("#education").append(HTMLschoolStart);
+            $(".education-entry:last").append("<div><img width=100 src='" + online[index].image + "'></div><div class='edudata'  >")
+            $(".education-entry:last .edudata").append(HTMLonlineTitle.replace("%data%",online[index].title));
+            $(".education-entry:last .edudata").append(HTMLonlineSchool.replace("%data%",online[index].school).replace("%url%",schools[index].schoolURL));
+            $(".education-entry:last .edudata").append(HTMLonlineDates.replace("%data%",online[index].date));
+            $(".education-entry:last .edudata").append(HTMLonlineURL.replace("%data%",online[index].url));
+            $(".education-entry:last .edudata").append("</div><div class='clearfix'></div>");
+        }
+
     }
     };
 	work.display(work);
 	projects.display(projects);
-	education.display(education.schools);
+	education.display(education);
 	$("#mapDiv").append(googleMap);
 	bio.display(bio);
