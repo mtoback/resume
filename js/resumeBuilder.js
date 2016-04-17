@@ -1,47 +1,57 @@
 var bio = {"name": "Michael Toback",
            "role": "Software Engineer",
            "contacts": {
+           	  "mobile": "408-206-3775",
            	  "email":"michael.toback@gmail.com",
-           	  "linkedin": "https://www.linkedin.com/in/mtoback",
-           	  "skype": "michaeltoback",
            	  "github":"https://github.com/mtoback",
+           	  "linkedin": "https://www.linkedin.com/in/mtoback",
+           	  "twitter": "https://twitter.com/michaeltoback",
+           	  "skype": "michaeltoback",
            	  "location": "Saratoga, CA"},
-           "pictureURL": "images/me.jpg",
            "welcomeMessage": "Welcome to my interactive resume",
            "skills": ["Java", "Python","SQL","HTML", "JavaScript",
                       "CSS","Patent Prosecution"],
-            "displayBio": function(){
-            	$("#header").prepend(HTMLbioPic.replace("%data%",bio.pictureURL));
+           "biopic": "images/me.jpg",
+            "display": function(){
+            	$("#header").prepend(HTMLbioPic.replace("%data%",bio.biopic));
             	$("#header").append(HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage));
-            	if ("skills" in bio){
-
-            	}
+                if ("skills" in bio && bio.skills.length > 0) {
+                    $("#header").append(HTMLskillsStart);
+                        bio.skills.forEach(function(skill){
+                         $("#skills").append(HTMLskills.replace("%data%",skill));
+                        });
+                }
+                var footer = $("#footerContacts");
+                for(key in bio.contacts){
+                    var value = HTMLFooterListItem.replace("%title%",key).replace("%value%",bio.contacts[key]);
+                    footer.append(value);
+                }
             }};
 var projects = {"project_list": [{"title": "Patent Attorney Website",
-                "date":2014,
-                "description":"Developed my own law website using PHP, HTML, and JavaScript",
+                "dates":"2008-2014",
+                "description":"Developed my own law website first using dreamweaver, then using PHP, HTML, and JavaScript",
                 "location": "San Jose, CA",
                 "images":["images/law_practice.png"]},
 				{"title": "IsBank",
-                "date":2009,
+                "dates":"2009-2010",
                 "description":"Demonstrated a workflow joint project with Chordiant and IBM",
                 "location": "Istanbul, Turkey",
-                "images":["images/fry.jpg"]},
+                "images":["images/isbank.jpg"]},
 				{"title": "Ness/Chordiant",
-                "date":"2005-2010",
+                "dates":"2005-2010",
                 "description":"Support Ness Team in Bangalore as Scrum Master, and led team on several projects both there and remote.",
                 "location": "Bangalore, India",
-                "images":["images/fry.jpg"]},
+                "images":["images/ness.png"]},
 				{"title": "Internationalization Workflow",
-                "date":2014,
+                "dates":"2014",
                 "description":"Worked on an Internationalization Workflow Engine out of VMware's Paris office",
                 "location": "Paris, France",
-                "images":["images/fry.jpg"]}                ],
+                "images":["images/vmware.png"]}                ],
                 "display": function(projects){
                 	projects.project_list.forEach(function(project){
                 		$("#projects").append(HTMLprojectStart);
                 		$(".project-entry:last").append(HTMLprojectTitle.replace("%data%",project.title));
-                		$(".project-entry:last").append(HTMLprojectDates.replace("%data%",project.date));
+                		$(".project-entry:last").append(HTMLprojectDates.replace("%data%",project.dates));
                 		$(".project-entry:last").append(HTMLprojectDescription.replace("%data%",project.description));
                 		project.images.forEach(function(image){
                 			$(".project-entry:last").append(HTMLprojectImage.replace("%data%",image));
@@ -49,128 +59,119 @@ var projects = {"project_list": [{"title": "Patent Attorney Website",
                 	});
                 }
             };
+
 var work = {"jobs": [{
 	"title": "Sr Member Tech Staff",
 	"employer": "VMware",
 	"location": "Palo Alto, CA",
-	"startDate": 2010,
+	"dates": "2010-present",
+	"url": "http://www.vmware.com",
+    "image": "images/vmware.png",
 	"description": "Worked in various roles on an internal tools team and product team. Currently working for the VxRail Product team as a Full Stack Developer using Python, Java, CSS, HTML, and Javascript on the UI team. Also responsible for the VM and Physical Appliance deployment tools "
 }, {
 	"title": "Patent Attorney",
 	"employer": "Law Office of Michael Toback",
 	"location": "San Jose, CA",
-	"startDate": 2007,
+	"dates": "2007-present",
+	"url": "http://www.toback-ip.com",
+    "image": "images/law_firm.jpg",
 	"description": "Licensed to practice before the State of California and USPTO. Prosecute patents on behalf of small companies. Also work with my VMware team to generate patents for VMware"
 }, {
 	"title": "Sr Software Engineer",
 	"employer": "Chordiant",
 	"location": "Cupertino, CA",
-	"startDate": 1999,
-	"endDate": 2010,
-	"description": "Developed software using Java for a customer support infrastructure product. Also acted as Scrum Master for two large remote teams."
+	"dates": "1999-2010",
+	"url": "http://www.chordiant.com",
+    "image": "images/ball-63527_640.jpg",
+	"description": "Sold to Pegasystems. Developed software using Java for a customer support infrastructure product. Also acted as Scrum Master for two large remote teams."
 }, {
 	"title": "Software Engineer",
 	"employer": "Oceania",
 	"location": "Palo Alto, CA",
-	"startDate": 1996,
-	"endDate": 1999,
-	"description": "Clinical Software startup. Developed code in Java, C++ and C for an electronic medical record. Worked closely with product management and business development to create new products."
+	"dates": "1996-1999",
+	"url": "#",
+    "image": "images/heartbeat-163709_640.jpg",
+	"description": "No longer in business. Clinical Software startup. Developed code in Java, C++ and C for an electronic medical record. Worked closely with product management and business development to create new products."
 }, {
 	"title": "Sr Member Tech Staff",
 	"employer": "GTE Government Systems",
 	"location": "Mountain View, CA",
-	"startDate": 1984,
-	"endDate": 1996,
-	"description": "worked on various DSP projects in various roles, including Architect, Team Lead, QE, and Systems Analyst. Also designed courses and trained engineers in software process and DSP."
+	"dates": "1984-1996",
+	"url": "#",
+    "image": "images/fighter-jet-63032_640.jpg",
+	"description": "Sold to General Dynamics. Worked on various DSP projects in various roles, including Architect, Team Lead, QE, and Systems Analyst. Also designed courses and trained engineers in software process and DSP."
 }, {
 	"title": "Electronics Engineer",
 	"employer": "LLNL",
 	"location": "Livermore, CA",
-	"startDate": 1978,
-	"endDate": 1984,
+	"dates": "1978-1984",
+    "url": "http://llnl.gov",
+    "image": "images/llnl.png",
 	"description": "Worked on various projects in the energy and biomedical fields as a developer/Architect, including a dual-laser cell sorter,laser isotope separation, and model nuclear repository at the Nevada Test Site "
 }],
-    "displayWork": function(work){
-    	$("#workExperience").append(HTMLworkStart);
+    "display": function(work){
          work.jobs.forEach(function(job){
-	    	//might not have an endDate!
-	    	var endDate = "present";
-	    	if ("endDate" in job){
-	    		endDate = job.endDate;
-	    	}
-	    	jobDescr = work.formatJob(job.employer, job.title, job.location, job.startDate, endDate, job.description);
-	    	$(".work-entry:last").append(jobDescr)
+            $("#workExperience").append(HTMLworkStart);
+            $(".work-entry:last").append("<div><img width=100 src='" + job.image + "'></div><div class='workdata'  >")
+	    	jobDescr = work.formatJob(job.employer, job.title, job.location, job.dates, job.url, job.description);
+	    	$(".work-entry:last .workdata").append(jobDescr)
+        $(".work-entry:last .workdata").append("</div><div class='clearfix'></div>");
     	});
      },
-    "formatJob" : function(employer, title, location, startDate, endDate, description){
-    	return HTMLworkEmployer.replace("%data%",employer) + HTMLworkTitle.replace("%data%", title) +
-    	       HTMLworkLocation.replace("%data%", location) + HTMLworkDates.replace("%data%", startDate + "-" + endDate) +
+    "formatJob" : function(employer, title, location, dates,  url, description){
+    	return HTMLworkEmployer.replace("%data%",employer).replace("%url%",url) + HTMLworkTitle.replace("%data%", title) +
+    	       HTMLworkLocation.replace("%data%", location) + HTMLworkDates.replace("%data%", dates) +
     	       HTMLworkDescription.replace("%data%", description);
     }
 
 };
 var education = {"schools": [{
-	"school": "Carnegie-Mellon University",
-	"yearsAttended": 2,
+	"name": "Carnegie-Mellon University",
 	"location": "Pittsburgh, PA",
 	"degree": "MSEE/BioEng",
 	"majors": ["Biomedical Engineering", "Electrical Engineering"],
-	"minors": [],
-	"graduation": 1978
+	"yearsAttended": 2,
+	"dates": "1976-1978",
+	"url":"http://www.cmu.edu"
 	}, {
-	"school": "Rensselaer Polytechnic Institute",
-	"yearsAttended": 3,
-	"degree": "BS Biomed Eng",
+	"name": "Rensselaer Polytechnic Institute",
 	"location": "Troy, NY",
+	"degree": "BS Biomed Eng",
 	"majors": ["Biomedical Engineering"],
-	"minors": ["Electrical Engineering", "Economics"],
-	"graduation": 1976
+	"dates": "1973-1976",
+	"url": "http://www.rpi.edu"
 	}, {
-	"school": "William Taft Law School",
+	"name": "William Taft Law School",
+	"location": "Santa Ana, CA",
 	"yearsAttended": 3,
 	"degree": "JD",
-	"location": "Santa Ana, CA",
 	"majors": ["Law"],
-	"minors": [],
-	"graduation": 2007
+	"dates": "2001-2006",
+	"url": "http://www.taftu.edu/TLS/index.htm"
 	}],
 	"online": [{"school": "udemy",
-            "course": "Front-End Developer Course",
-            "yearTaken": 2016,
-            "courseURL": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"},
+            "title": "Front-End Developer Course",
+            "date": "2016",
+            "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"},
             {"school": "udemy",
-            "course": "Responsive Images",
-            "yearTaken": 2016,
-            "courseURL": "https://www.udacity.com/course/responsive-images--ud882"}],
+            "title": "Responsive Images",
+            "date": 2016,
+            "url": "https://www.udacity.com/course/responsive-images--ud882"}],
 
-    "format": function(schools){
+    "display": function(schools){
     	for (var index in schools){
     	    $("#education").append(HTMLschoolStart);
-    	    $(".education-entry:last").append(HTMLschoolName.replace("%data%",schools[index].school));
+    	    $(".education-entry:last").append(HTMLschoolName.replace("%data%",schools[index].name).replace("%url%",schools[index].url));
     	    $(".education-entry:last").append(HTMLschoolDegree.replace("%data%",schools[index].degree));
-    	    $(".education-entry:last").append(HTMLschoolDates.replace("%data%",schools[index].graduation));
+    	    $(".education-entry:last").append(HTMLschoolDates.replace("%data%",schools[index].dates));
     	    $(".education-entry:last").append(HTMLschoolLocation.replace("%data%",schools[index].location));
     	    $(".education-entry:last").append(HTMLschoolMajor.replace("%data%",schools[index].majors.join()));
 
     	}
     }
     };
-    if ("skills" in bio && bio.skills.length > 0) {
-    	$("#header").append(HTMLskillsStart);
-    		bio.skills.forEach(function(skill){
-    	     $("#skills").append(HTMLskills.replace("%data%",skill));
-    		});
-    }
-	function inName(nameString){
-		var names = nameString.split(" ");
-		var firstName = names[0];
-		var lastName = names[1];
-		firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
-		lastName = lastName.toUpperCase();
-		return firstName + " " + lastName;
-	}
-	work.displayWork(work);
+	work.display(work);
 	projects.display(projects);
-	education.format(education.schools);
+	education.display(education.schools);
 	$("#mapDiv").append(googleMap);
-	bio.displayBio(bio);
+	bio.display(bio);

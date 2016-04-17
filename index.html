@@ -21,7 +21,6 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <!-- Tells the browser what the title of this page should be. -->
   <title>Resume</title>
   <!-- Load the page styles. -->
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <link href="css/style.css" rel="stylesheet" type="text/css">
   <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css">
 
@@ -40,7 +39,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   -->
   <script src="js/jQuery.js"></script>
   <script src="js/jquery-ui.min.js"></script>
-
+  <!-- fix accordian... see http://jsfiddle.net/xanetia/8kz4m/ -->
   <!-- More on helper.js in the class -->
   <script src="js/helper.js"></script>
 
@@ -49,7 +48,8 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <script>
   $(function(){
     $("#accordion").accordion({
-      heightStyle:"content"
+      heightStyle:"content",
+      icons: {}
     });
   })
   </script>
@@ -70,23 +70,23 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     </div>
     <div id="accordion">
       <h2>Work Experience</h2>
-      <div id="workExperience" class='gray'>
+      <div id="workExperience" class='gray section'>
       </div>
       <h2>Projects</h2>
       <div id="projects">
       </div>
       <h2>Education</h2>
-      <div id="education" class='gray'>
+      <div id="education" class='gray section'>
       </div>
+    </div>
       <h2>Where I've Lived and Worked</h2>
       <div id="mapDiv">
       </div>
       <h2 class='orange center-text'>Let's Connect</h2>
-      <div id="letsConnect" class='dark-gray'>
-          <ul id="footerContacts" class="flex-box">
+      <div id="letsConnect" class='gray section'>
+         <ul id="footerContacts" class="flex-box">
         </ul>
       </div>
-    </div>
   </div>
 
   <!--
