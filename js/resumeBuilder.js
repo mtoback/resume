@@ -46,19 +46,22 @@ var projects = {"project_list": [{"title": "Patent Attorney Website",
                 "dates":"2014",
                 "description":"Worked on an Internationalization Workflow Engine out of VMware's Paris office",
                 "location": "Paris, France",
-                "images":["images/vmware.png"]}                ],
+                "images":["images/vmware.png"]}],
                 "display": function(projects){
                 	projects.project_list.forEach(function(project){
                 		$("#projects").append(HTMLprojectStart);
-                		$(".project-entry:last").append(HTMLprojectTitle.replace("%data%",project.title));
-                		$(".project-entry:last").append(HTMLprojectDates.replace("%data%",project.dates));
-                		$(".project-entry:last").append(HTMLprojectDescription.replace("%data%",project.description));
-                		project.images.forEach(function(image){
-                			$(".project-entry:last").append(HTMLprojectImage.replace("%data%",image));
-                		});
-                	});
+                        $(".project-entry:last").append("<div class='projimage'>");
+                        project.images.forEach(function(image){
+                            $(".project-entry:last .projimage").append(HTMLprojectImage.replace("%data%",image));
+                        });
+                        $(".project-entry:last").append("<div class='projdata'>");
+                		$(".project-entry:last .projdata").append(HTMLprojectTitle.replace("%data%",project.title));
+                		$(".project-entry:last .projdata").append(HTMLprojectDates.replace("%data%",project.dates));
+                		$(".project-entry:last .projdata").append(HTMLprojectDescription.replace("%data%",project.description));
+                    });
                 }
-            };
+            }
+
 
 var work = {"jobs": [{
 	"title": "Sr Member Tech Staff",
@@ -170,8 +173,7 @@ var education = {"schools": [{
     	for (var index in schools){
     	    $("#education").append(HTMLschoolStart);
             $(".education-entry:last").append("<div><img width=100 src='" + schools[index].image + "'></div><div class='edudata'  >")
-    	    $(".education-entry:last .edudata").append(HTMLschoolName.replace("%data%",schools[index].name).replace("%url%",schools[index].url));
-    	    $(".education-entry:last .edudata").append(HTMLschoolDegree.replace("%data%",schools[index].degree));
+    	    $(".education-entry:last .edudata").append(HTMLschoolName.replace("%data%",schools[index].name).replace("%url%",schools[index].url) + HTMLschoolDegree.replace("%data%",schools[index].degree));
     	    $(".education-entry:last .edudata").append(HTMLschoolDates.replace("%data%",schools[index].dates));
     	    $(".education-entry:last .edudata").append(HTMLschoolLocation.replace("%data%",schools[index].location));
     	    $(".education-entry:last .edudata").append(HTMLschoolMajor.replace("%data%",schools[index].majors.join()));
@@ -182,8 +184,7 @@ var education = {"schools": [{
         for (var index in education.online){
             $("#education").append(HTMLschoolStart);
             $(".education-entry:last").append("<div><img width=100 src='" + online[index].image + "'></div><div class='edudata'  >")
-            $(".education-entry:last .edudata").append(HTMLonlineTitle.replace("%data%",online[index].title));
-            $(".education-entry:last .edudata").append(HTMLonlineSchool.replace("%data%",online[index].school).replace("%url%",schools[index].schoolURL));
+            $(".education-entry:last .edudata").append(HTMLonlineTitle.replace("%data%",online[index].title) + HTMLonlineSchool.replace("%data%",online[index].school).replace("%url%",schools[index].schoolURL));
             $(".education-entry:last .edudata").append(HTMLonlineDates.replace("%data%",online[index].date));
             $(".education-entry:last .edudata").append(HTMLonlineURL.replace("%data%",online[index].url));
             $(".education-entry:last .edudata").append("</div><div class='clearfix'></div>");
