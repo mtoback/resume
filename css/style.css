@@ -4,6 +4,9 @@
   font-family: 'Roboto', sans-serif;
 }
 
+h1, h2, h3, h4, h4 {
+  font-family: 'Roboto Slab', serif;
+}
 .clearfix {
   overflow: auto;
 }
@@ -93,8 +96,8 @@ a {
   display: none;
 }
 
-.orange {
-  background-color: #F5AE23;
+.blue {
+  background-color: #40a6f5;
 }
 
 .orange-text {
@@ -218,6 +221,6 @@ span {
   max-height: 300px;
 }
 }
-
+.footer-list{margin:0;}
 #accordion .ui-icon { display: none; }
 #accordion .ui-accordion-header a { padding-left: 0; }

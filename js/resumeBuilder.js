@@ -24,8 +24,21 @@ var bio = {"name": "Michael Toback",
                 var footer = $("#footerContacts");
                 for (var key in bio.contacts){
                 	if (bio.contacts.hasOwnProperty(key)) {
-                    var value = HTMLFooterListItem.replace("%title%",key).replace("%value%",bio.contacts[key]);
-                    footer.append(value);
+                        var url = "#";
+                        var title = key;
+                        var value =  bio.contacts[key];
+                        if(value.indexOf('-') > 0){
+                            url = "tel:" + value;
+                            footer.append(HTMLFooterLinkItem.replace("%title%",title).replace("%url%", url ));
+                        } else if (value.indexOf('http') > -1){
+                            url = value;
+                            footer.append(HTMLFooterLinkItem.replace("%title%",title).replace("%url%", url ));
+                        } else if (value.indexOf('@') > 1){
+                            url = "mailto:" + value;
+                            footer.append(HTMLFooterLinkItem.replace("%title%",title).replace("%url%", url ));
+                        } else {
+                            footer.append(HTMLFooterListItem.replace("%title%", title).replace("%value%",value));
+                        }
                 	}
                 }
             }};
@@ -197,10 +210,10 @@ var education = {"schools": [{
         var online = education.online;
         $("#education").append(HTMLonlineClasses);
         for (var index1 in online){
-        	if (online[index].hasOwnProperty("title")) {
+        	if (online[index1].hasOwnProperty("title")) {
 	            $("#education").append(HTMLschoolStart);
 	            $(".education-entry:last").append("<div><img width=100 src='" + online[index1].image + "'></div><div class='edudata'  >");
-	            $(".education-entry:last .edudata").append(HTMLonlineTitle.replace("%data%",online[index1].title) + HTMLonlineSchool.replace("%data%",online[index1].school).replace("%url%",online[index].schoolURL));
+	            $(".education-entry:last .edudata").append(HTMLonlineTitle.replace("%data%",online[index1].title) + HTMLonlineSchool.replace("%data%",online[index1].school).replace("%url%",online[index1].schoolURL));
 	            $(".education-entry:last .edudata").append(HTMLonlineDates.replace("%data%",online[index1].date));
 	            $(".education-entry:last .edudata").append(HTMLonlineURL.replace("%data%",online[index1].url));
 	            $(".education-entry:last .edudata").append("</div><div class='clearfix'></div>");

@@ -55,7 +55,8 @@ var HTMLonlineSchool = ' - %data%</a>';
 var HTMLonlineDates = '<div class="date-text">%data%</div>';
 var HTMLonlineURL = '<br><a target="_blank"href="%url">%data%</a>';
 
-var HTMLFooterListItem = "<li>%title%:%value%</li>";
+var HTMLFooterLinkItem = "<li ><a class='footer-list' href='%url%'>%title%</a></li>";
+var HTMLFooterListItem = "<li>%title% : %value%</li>";
 
 var googleMap = '<div id="map"></div>';
 
