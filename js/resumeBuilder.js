@@ -47,7 +47,7 @@ var bio = {
     }
 };
 var projects = {
-    "project_list": [{
+    "projects": [{
         "title": "Patent Attorney Website",
         "dates": "2008-2014",
         "description": "Developed my own law website first using dreamweaver, then using PHP, HTML, and JavaScript",
@@ -85,7 +85,7 @@ var projects = {
         "images": ["images/niosh.jpg"]
     }],
     "display": function(projects) {
-        projects.project_list.forEach(function(project) {
+        projects.projects.forEach(function(project) {
             $("#projects").append(HTMLprojectStart);
             $(".project-entry:last").append("<div class='projimage'>");
             project.images.forEach(function(image) {
@@ -194,7 +194,7 @@ var education = {
         "image": "images/taft.png",
         "url": "http://www.taftu.edu/TLS/index.htm"
     }],
-    "online": [{
+    "onlineCourses": [{
         "school": "udemy",
         "schoolURL": "http://www.udemy.com",
         "title": "Front-End Developer Course",
@@ -223,7 +223,7 @@ var education = {
                 $(".education-entry:last .edudata").append("</div><div class='clearfix'></div>");
             }
         }
-        var online = education.online;
+        var online = education.onlineCourses;
         $("#education").append(HTMLonlineClasses);
         for (var index1 in online) {
             if (online[index1].hasOwnProperty("title")) {
