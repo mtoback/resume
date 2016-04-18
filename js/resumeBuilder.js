@@ -84,7 +84,7 @@ var projects = {
         "location": "Cincinnati, OH",
         "images": ["images/niosh.jpg"]
     }],
-    "display": function(projects) {
+    "display": function() {
         projects.projects.forEach(function(project) {
             $("#projects").append(HTMLprojectStart);
             $(".project-entry:last").append("<div class='projimage'>");
@@ -150,7 +150,7 @@ var work = {
         "image": "images/llnl.png",
         "description": "Worked on various projects in the energy and biomedical fields as a developer/Architect, including a dual-laser cell sorter,laser isotope separation, and model nuclear repository at the Nevada Test Site "
     }],
-    "display": function(work) {
+    "display": function() {
         work.jobs.forEach(function(job) {
             $("#workExperience").append(HTMLworkStart);
             $(".work-entry:last").append("<div><img width=100 src='" + job.image + "'></div><div class='workdata'  >");
@@ -210,7 +210,7 @@ var education = {
         "url": "https://www.udacity.com/course/responsive-images--ud882"
     }],
 
-    "display": function(education) {
+    "display": function() {
         var schools = education.schools;
         for (var index in schools) {
             if (schools[index].hasOwnProperty("name")) {
@@ -238,8 +238,8 @@ var education = {
 
     }
 };
-bio.display(bio);
-work.display(work);
-projects.display(projects);
-education.display(education);
+bio.display();
+work.display();
+projects.display();
+education.display();
 $("#mapDiv").append(googleMap);
