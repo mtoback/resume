@@ -4,50 +4,62 @@
   font-family: 'Roboto', sans-serif;
 }
 
-h1, h2, h3, h4, h4 {
-  font-family: 'Roboto Slab', serif;
-}
 .clearfix {
   overflow: auto;
 }
 
 
 .education-entry, .work-entry, .project-entry {
-  display:flex;
+  display: flex;
   padding-left: 5%;
   padding-right: 5%;
 }
 
 h1 {
+  font-family: 'Roboto Slab', serif;
   font-size: 40px;
   color: #d8ebd6;
   line-height: 48px;
   display: inline;
+  padding:10px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 h2 {
+  font-family: 'Roboto Slab', serif;
   font-weight: bold;
   font-size: 24px;
   color: #999999;
   line-height: 29px;
-  padding: 10px;
+  padding:10px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 h3 {
+  font-family: 'Roboto Slab', serif;
   font-style: italic;
   font-size: 20px;
   color: #000000;
   line-height: 22px;
+  padding:10px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 h4 {
+  font-family: 'Roboto Slab', serif;
   font-weight: bold;
   font-size: 14px;
   color: #4A4A4A;
   line-height: 17px;
+  padding:10px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
-h2, h3, h4, h5 {
+h5 {
   padding:10px;
   padding-left: 5%;
   padding-right: 5%;
@@ -222,5 +234,8 @@ span {
   }
 }
 .footer-list{margin:0;}
+.thumbnail {
+  max-width: 100px;
+}
 #accordion .ui-icon { display: none; }
 #accordion .ui-accordion-header a { padding-left: 0; }

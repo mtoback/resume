@@ -153,7 +153,7 @@ var work = {
     "display": function() {
         work.jobs.forEach(function(job) {
             $("#workExperience").append(HTMLworkStart);
-            $(".work-entry:last").append("<div><img width=100 src='" + job.image + "'></div><div class='workdata'  >");
+            $(".work-entry:last").append("<div><img class='thumbnail' src='" + job.image + "'></div><div class='workdata'  >");
             jobDescr = work.formatJob(job.employer, job.title, job.location, job.dates, job.url, job.description);
             $(".work-entry:last .workdata").append(jobDescr);
             $(".work-entry:last .workdata").append("</div><div class='clearfix'></div>");
@@ -215,7 +215,7 @@ var education = {
         for (var index in schools) {
             if (schools[index].hasOwnProperty("name")) {
                 $("#education").append(HTMLschoolStart);
-                $(".education-entry:last").append("<div><img width=100 src='" + schools[index].image + "'></div><div class='edudata'  >");
+                $(".education-entry:last").append("<div><img class='thumbnail' src='" + schools[index].image + "'></div><div class='edudata'  >");
                 $(".education-entry:last .edudata").append(HTMLschoolName.replace("%data%", schools[index].name).replace("%url%", schools[index].url) + HTMLschoolDegree.replace("%data%", schools[index].degree));
                 $(".education-entry:last .edudata").append(HTMLschoolDates.replace("%data%", schools[index].dates));
                 $(".education-entry:last .edudata").append(HTMLschoolLocation.replace("%data%", schools[index].location));
@@ -228,7 +228,7 @@ var education = {
         for (var index1 in online) {
             if (online[index1].hasOwnProperty("title")) {
                 $("#education").append(HTMLschoolStart);
-                $(".education-entry:last").append("<div><img width=100 src='" + online[index1].image + "'></div><div class='edudata'  >");
+                $(".education-entry:last").append("<div><img class='thumbnail' src='" + online[index1].image + "'></div><div class='edudata'  >");
                 $(".education-entry:last .edudata").append(HTMLonlineTitle.replace("%data%", online[index1].title) + HTMLonlineSchool.replace("%data%", online[index1].school).replace("%url%", online[index1].schoolURL));
                 $(".education-entry:last .edudata").append(HTMLonlineDates.replace("%data%", online[index1].date));
                 $(".education-entry:last .edudata").append(HTMLonlineURL.replace("%data%", online[index1].url));
