@@ -20,7 +20,7 @@ h1, h2, h3, h4, h4 {
 
 h1 {
   font-size: 40px;
-  color: #F5A623;
+  color: #51ae59;
   line-height: 48px;
   display: inline;
 }
@@ -92,7 +92,7 @@ a {
 }
 
 #skillsH3 {
-  color: #F5AE23;
+  color: #51ae59;
   display: none;
 }
 
@@ -100,8 +100,8 @@ a {
   background-color: #40a6f5;
 }
 
-.orange-text {
-  color: #F5AE23;
+.green-text {
+  color: #51ae59;
 }
 
 .white-text {
