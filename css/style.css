@@ -20,7 +20,7 @@ h1, h2, h3, h4, h4 {
 
 h1 {
   font-size: 40px;
-  color: #51ae59;
+  color: #d8ebd6;
   line-height: 48px;
   display: inline;
 }
@@ -92,7 +92,7 @@ a {
 }
 
 #skillsH3 {
-  color: #51ae59;
+  color: #d8ebd6;
   display: none;
 }
 
@@ -121,7 +121,7 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #40a6f5;
   max-height: 200px;
 }
 
@@ -137,7 +137,7 @@ a {
 .center-content {
   padding-left: 5%;
   padding-right: 5%;
-  }
+}
 
 ul {
   list-style-type: none;
@@ -217,9 +217,9 @@ span {
     display: block;
   }
 
-.section {
-  max-height: 300px;
-}
+  .section {
+    max-height: 300px;
+  }
 }
 .footer-list{margin:0;}
 #accordion .ui-icon { display: none; }
